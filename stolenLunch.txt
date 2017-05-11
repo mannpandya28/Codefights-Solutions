@@ -1,0 +1,41 @@
+//java
+String stolenLunch(String note) {
+    String s = "";
+for(int i=0;i<note.length();i++)
+{
+    if(note.charAt(i)>='a' && note.charAt(i)<='j')
+    {
+        char c = note.charAt(i);
+        if(c=='a')
+            s+='0';
+        if(c=='b')s+='1';
+            if(c=='c')s+='2';
+                if(c=='d')s+='3';
+                    if(c=='e')s+='4';
+                        if(c=='f')s+='5';
+                            if(c=='g')s+='6';
+                                if(c=='h')s+='7';
+                                    if(c=='i')s+='8';
+                                        if(c=='j')s+='9';
+    }
+    else if(note.charAt(i)>='0' && note.charAt(i)<='9')
+    {
+        char c = note.charAt(i);
+        if(c=='0')
+            s+='a';
+        if(c=='1')s+='b';
+            if(c=='2')s+='c';
+                if(c=='3')s+='d';
+                    if(c=='4')s+='e';
+                        if(c=='5')s+='f';
+                            if(c=='6')s+='g';
+                                if(c=='7')s+='h';
+                                    if(c=='8')s+='i';
+                                        if(c=='9')s+='j';
+
+    }
+    else
+        s+=note.charAt(i);
+}
+    return s;
+}

@@ -1,0 +1,16 @@
+int[] arrayComplexElementsProduct(int[] real, int[] imag) {
+//java
+    int r = real[0];
+    int j = imag[0];
+    int n = real.length;
+    
+    for (int i = 1; i < n; i++) {
+        int newReal = r * real[i] - j * imag[i];
+        int newImag = r * imag[i] + j * real[i];
+        
+        r = newReal;
+        j = newImag;
+    }
+    
+    return new int[]{r, j};
+}

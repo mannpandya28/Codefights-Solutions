@@ -1,0 +1,26 @@
+int minArea = Integer.MAX_VALUE;
+    int index = -1;
+    Arrays.sort(p);
+    
+    for(int i = 0;i<boxes.length;i++){
+        Arrays.sort(boxes[i]);
+        boolean canFit = true;
+        for(int j=0;j<p.length;j++){
+            if(p[j] > boxes[i][j]){
+                canFit = false;
+                break;   
+            }
+        }
+        
+        if(canFit) {
+            int temp = 1;
+            for(int j=0;j<p.length;j++){
+                temp *= boxes[i][j];
+            }
+            if(minArea > temp){
+                minArea = temp;
+                index = i;
+            }
+        }
+    }
+    return index;

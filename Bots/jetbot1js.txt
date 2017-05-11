@@ -1,0 +1,25 @@
+function packageBoxing(pkg, boxes) {
+var productVol = pkg[0]*pkg[1]*pkg[2];
+    var selectIndex=-1;
+    var volumeInBox;
+    var arr =[];
+    var min=999999;
+for(var i=0;i<boxes.length;i++)
+{
+    volumeInBox =1;
+    for(var j=0;j<boxes[i].length;j++)
+    {
+        volumeInBox*=boxes[i][j];
+    }
+  arr.push(volumeInBox);
+}
+    for(var i=0;i<arr.length;i++)
+    {
+         if(arr[i]>=productVol && arr[i]<min){
+                min=arr[i];
+                selectIndex=i;
+         }
+    }
+return selectIndex;
+}
+   

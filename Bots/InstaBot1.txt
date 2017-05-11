@@ -1,0 +1,16 @@
+function delivery(order, shoppers) {
+var ans = [];
+    var time=0;
+    for(var i=0;i<shoppers.length;i++)
+    {
+        time = ((shoppers[i][0]+order[0])/shoppers[i][1])+shoppers[i][2];
+        if(time<order[1])
+            ans.push(false);
+        else if(time>=order[1] && time<=order[1]+order[2])
+            ans.push(true);
+        else
+            ans.push(false);
+    }
+    return ans;
+
+}

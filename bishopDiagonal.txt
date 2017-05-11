@@ -1,0 +1,38 @@
+String[] bishopDiagonal(String bishop1, String bishop2) {
+//java
+    int x1 = bishop1.charAt(0);
+    int y1 = bishop1.charAt(1);
+    int x2 = bishop2.charAt(0);
+    int y2 = bishop2.charAt(1);
+    if (x1 - x2 == y1 - y2) {
+        while (x1 > 'a' && y1 > '1') {//x1
+            x1--;
+            y1--;
+        }
+        while (x2 < 'h' && y2 < '8') {
+            x2++;
+            y2++;//y2
+        }
+    } else if (x1 - x2 == y2 - y1) {//y1
+        while (x1 > 'a' && y1 < '8') {
+            x1--;
+            y1++;
+        }
+        while (x2 < 'h' && y2 > '1') {
+            x2++;
+            y2--;
+        }
+    } else {
+        if (x1 > x2) {//x2
+            int temp = x1;
+            x1 = x2;
+            x2 = temp;
+            temp = y1;
+            y1 = y2;
+            y2 = temp;
+        }
+    }
+    String b1 = "" + (char)x1 + (char)y1;
+    String b2 = "" + (char)x2 + (char)y2;
+    return new String[]{b1,b2};
+}

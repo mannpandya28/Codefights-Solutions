@@ -1,0 +1,39 @@
+int allianceHelp(int t, int allianceSize) {
+int boostSize = (int)(10*t)/100;
+    int count=0;
+    int defaultBoost =60;
+    int t2=t;
+    
+    if(allianceSize<10){
+    for(int i=0;i<allianceSize;i++)
+    {
+        t-=boostSize;
+    }
+        }
+    else
+    {
+        for(int i=0;i<10;i++)
+        {
+            t-=boostSize;
+        }
+    }
+    
+     if(allianceSize<10){
+    for(int i=0;i<allianceSize;i++)
+    {
+        t2-=60;
+    }
+        }
+    else
+    {
+        for(int i=0;i<10;i++)
+        {
+            t2-=60;
+        }
+    }
+    if(t<0|| t2<0)
+        return 0;
+    if(t2<t && t2>0 && t>0)
+        return t2;
+    return t;
+}

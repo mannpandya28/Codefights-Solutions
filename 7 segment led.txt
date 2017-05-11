@@ -1,0 +1,25 @@
+//Python2
+
+def digitalNumber(k):
+    a=[]
+    M=20
+    s=0
+    while k>=M:
+        a.append('1')
+        k-=2
+        s+=1
+    s%=3
+    seg=[6,2,5,5,4,5,6,3,7,6]
+    d=[[0],[-1],[-1]]
+    for i in range(1,M):
+        for j in range(3):
+            d[j].append(-1)
+            for dd in range(10):
+                ps=(j-dd+9)%3
+                psc=i-seg[dd]
+                if psc < 0 or d[ps][psc] == -1:
+                    continue
+                cur = (dd if d[ps][psc] == 0 else int(str(dd) + str(d[ps][psc])))
+                d[j][i] = max(d[j][i], cur) if d[j][i] != -1 else cur
+
+    return str(d[(3 - s) % 3][k]) + ''.join(a)

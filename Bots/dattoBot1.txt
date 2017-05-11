@@ -1,0 +1,48 @@
+int[] incrementalBackups(int lastBackupTime, int[][] changes) {
+ArrayList<Integer> al = new ArrayList<Integer>();
+    for(int i=0;i<changes.length;i++)
+    {
+        if(changes[i][0]>lastBackupTime)
+        {
+            al.add(changes[i][1]);
+        }
+    }
+
+    //int [] ans = al.toArray(new int[al.size()]);
+    int[] intArray = new int[al.size()];
+for (int i = 0; i < intArray.length; i++) {
+    intArray[i] = al.get(i);
+}
+   Arrays.sort(intArray);
+    boolean b =true;
+    boolean c =true;
+    int count=0;
+    for(int i=0;i<=intArray.length-1;i++)
+    {
+        b=true;
+        for(int j=i+1;j<intArray.length;j++)
+        {
+            if(intArray[i]==intArray[j])
+                b =false;
+        }
+        if(b==true)
+            count++;
+    }
+    int[] ans = new int[count];
+    count=0;
+    for(int i=0;i<=intArray.length-1;i++)
+    {
+        c=true;
+        for(int j=i+1;j<intArray.length;j++)
+        {
+            if(intArray[i]==intArray[j])
+                c=false;
+        }
+        if(c){
+            ans[count]=intArray[i];
+            count++;
+        }
+    }
+    //ans[ans.length]=intArray[intArray.length];
+    return ans;
+}

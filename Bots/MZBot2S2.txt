@@ -1,0 +1,23 @@
+int questEfficiencyItem(int[] h, int[] points, int timeForQuests) {
+  int[][] dp = new int[h.length][timeForQuests + 1];
+  dp[0][0] = 0;
+  for(int i = 1 ; i < dp[0].length; i++){
+    if(h[0] <= i){
+      dp[0][i] = points[0];
+    }else{
+      dp[0][i] = 0;
+    }
+  }
+		
+  for (int i = 1; i < dp.length; i++) {
+    for (int j = 1; j < dp[i].length; j++) {
+      // if a weight is more than the allowed weight, that weight cannot be picked.
+        if(h[i] > j){
+          dp[i][j] = dp[i-1][j];
+        }else{
+          dp[i][j] = Math.max(dp[i-1][j], points[i] + dp[i-1][j-h[i]]);
+        }
+      }
+    }
+    return dp[dp.length-1][timeForQuests];
+}

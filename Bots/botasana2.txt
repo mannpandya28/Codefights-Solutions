@@ -1,0 +1,30 @@
+function smartAssigning(names, statuses, projects, tasks) {
+ var b;
+    var indexOfSelected;
+    var min = 999;
+    //var min2 = 999;
+ for(var i=0;i<statuses.length;i++)
+        {
+            b = statuses[i];
+            if(b === false)
+                {
+                    if(tasks[i]<min){
+                      min=tasks[i];
+                        indexOfSelected=i;}
+                        
+                       // min2 = projects[indexOfSelected]; 
+                            
+                            
+                    if(tasks[i]==min){
+                        
+                        if(projects[i]<projects[indexOfSelected])
+                            indexOfSelected = i;
+                        //else
+                           // indexOfSelected = i;
+                            
+                    }
+                   
+                }
+}
+    return names[indexOfSelected];
+}

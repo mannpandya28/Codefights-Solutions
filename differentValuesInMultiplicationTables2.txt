@@ -1,0 +1,8 @@
+int differentValuesInMultiplicationTable2(int n, int m) {
+    HashSet<Integer> h = new HashSet<>();
+    for(int i=1; i<=n; i++)
+        for(int j=1; j<=m; j++)
+            h.add(i*j);
+    return h.size();
+
+}

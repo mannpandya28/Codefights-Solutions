@@ -1,0 +1,17 @@
+//java
+String lookAndSaySequenceNextElement(String element) {
+    int c = 1;
+    StringBuilder r = new StringBuilder();
+    element += '#';
+    for (int i = 1; i < element.length(); i++) {
+        if (element.charAt(i) != element.charAt(i - 1)) {
+            r.append(c);
+            r.append(element.charAt(i - 1));
+            c = 1;
+        } else {
+            c++;
+        }
+    }
+
+    return r.toString();
+}

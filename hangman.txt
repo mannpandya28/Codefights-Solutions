@@ -1,0 +1,23 @@
+//c#
+     bool hangman(string word, string letters)
+        {
+            int misses = 0;
+            foreach (var c in letters) {
+                if (misses >= 6)
+                    return false;
+                if (word == "")
+                    return true;
+
+                if (word.Contains(c))
+                    word = word.Replace(c.ToString(), "");
+                else
+                    misses++;
+                
+                if (misses >= 6)
+                    return false;
+                if (word == "")
+                    return true;
+            }
+
+            return false;
+        }

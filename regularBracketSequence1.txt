@@ -1,0 +1,9 @@
+boolean regularBracketSequence1(String sequence) {
+    Stack<Character> stk = new Stack<>();
+    for (char c : sequence.toCharArray()) {
+        if (c == '(') stk.push(c);
+        else if (stk.isEmpty() || stk.pop() != '(') return false;
+    }
+    
+    return stk.isEmpty();
+}

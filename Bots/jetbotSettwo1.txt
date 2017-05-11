@@ -1,0 +1,59 @@
+double[][] jetDashboard(int[] orders, int n) {
+ // new Changes
+double[][] ans = new double[n][3];
+ int max=0;
+ int scanArraytill=0;
+ double mean=0;
+ int meanCount=0;
+ double sd =0;
+ int sdcount=0;
+ for(int i=0; i<ans.length; i++)
+ {
+  scanArraytill++;
+  for(int j=0; j<ans[i].length; j++)
+  {
+     if(j==0)//max till that point
+     {
+       max=0;//reset max
+      //increment scanning index
+      for(int k=orders.length-n; k<orders.length-n+scanArraytill;k++){
+       if(orders[k]>max)
+        max = orders[k];
+     }
+      ans[i][j]=max;
+    }
+   
+     if(j==1)
+     {
+      meanCount=0;//resetmincount
+      mean=0;
+       for(int k=orders.length-n; k<orders.length-n+scanArraytill;k++)
+       {
+        mean+= orders[k];
+        meanCount++;
+       }
+      mean/=meanCount;
+      ans[i][j]=mean;
+     }
+   if(j==2)
+   {
+     if(i==0)
+      ans[i][j]=-1;
+     else{
+      sdcount=0;
+      sd=0;
+      for(int k=orders.length-n; k<orders.length-n+scanArraytill;k++)
+      {
+       sd+= Math.pow(orders[k]-ans[i][j-1],2);
+       sdcount++;
+      }
+      sd/=sdcount-1;
+      ans[i][j] = Math.sqrt(sd); 
+     }
+   }
+    
+  }
+  
+ }
+   return ans; 
+}

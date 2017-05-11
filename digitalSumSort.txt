@@ -1,0 +1,35 @@
+//C#
+int[] digitalSumSort(int[] a) {
+    
+    
+    for(int i = 0; i< a.Length; i++)
+    {
+        for(int j = i+1; j< a.Length;j++)
+        {
+            int sumi = 0;
+            int inti = a[i];
+            while(inti  > 0)
+            {
+                sumi += inti %10;
+                inti /= 10;
+            }
+            
+            int sumj = 0;
+            int intj = a[j];
+            while(intj  > 0)
+            {
+                sumj += intj %10;
+                intj /= 10;
+            }
+            
+            if(sumi > sumj || (sumi == sumj && a[i] > a[j]))
+            {
+                int t = a[i];
+                a[i] = a[j];
+                a[j] = t;
+            }            
+        }
+    }
+    
+    return a;
+}

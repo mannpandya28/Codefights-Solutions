@@ -1,0 +1,31 @@
+function isAdmissibleOverpayment(prices, notes, x) {
+     var temp1;
+    var f;
+    var ans;
+    var final=0;
+for(var i=0;i<notes.length;i++)
+{
+    if(notes[i].includes("Same"))
+        final += 0;//no change in price
+    else//split
+    {
+        var sub = notes[i].split("%");//sub[0]contains number
+        var temp1 = parseInt(sub[0]);
+        f = temp1/100;
+        if(sub[1].includes("higher")){
+                    ans = 1+f;
+            final+= prices[i]-(prices[i]/ans);
+            console.log("add"+final);
+            }
+        if(sub[1].includes("lower")){
+            ans = 1-f;
+            final-=(prices[i]/ans)-prices[i];
+               
+        console.log("minus"+final)}
+    }
+    
+}
+    final=Math.round(final)
+    console.log(final);
+    return final<=x?true:false;  
+}

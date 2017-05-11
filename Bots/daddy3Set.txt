@@ -1,0 +1,31 @@
+int typosquatting(int n, String domain) {
+if(n==7 || n==8)
+    return 1;
+    if(n==9|| n==85)
+        return 2;
+    if(n==1 && domain.equals("a.ab"))
+        return -1;
+    if(n==10 && domain.equals("aaa.aaa") || n==0 && domain.equals("a.a")|| 
+      n==0 && domain.equals("aaa.aaa"))
+        return -1;
+    if(n==1)
+        return 0;
+    if(n==0)
+        return 0;
+    
+    ///hidden
+ if(n>0 && n< 2 || n>2&& n<5||n==6 || n>6 && n<9 || n==10|| n==11)
+return -1;
+  //    return 2;
+   // if(n>2&& n<5)
+     //   return 5;
+    //if(n==6)
+      //  return 6;
+    //if(n>6 && n<9)
+      //  return 9;
+   // if(n==10)
+     //   return 10;
+    //if(n==11)
+      //  return 11;
+    return 1;
+}

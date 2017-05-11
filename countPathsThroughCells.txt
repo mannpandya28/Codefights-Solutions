@@ -1,0 +1,14 @@
+int choose(int a, int b) {
+    vector<vector<int>> choose(a+1,vector<int>(b+1,0));
+    for (int i = 0; i <= a; ++i) {
+        choose[i][0] = 1;
+        for (int j = 1; j <= i && j <= b; ++j)
+            choose[i][j] = choose[i-1][j]+choose[i-1][j-1];
+    }
+    return choose[a][b];
+}
+
+int countPathsThroughCell(int n, int m, int x, int y) {
+    return choose(x+y,x)*choose(n-2+m-x-y,n-x-1);
+}
+//c++

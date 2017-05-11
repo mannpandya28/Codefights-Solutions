@@ -1,0 +1,16 @@
+std::vector<int> arrayPreviousLess(std::vector<int> items) {
+    std::vector<int> answer(items.size(), -1);
+    for (int i = 0; i < items.size(); ++i) {
+//cpp
+        bool fulfill = false;
+        for (int j = 0; j < i; ++j) {
+            if (items[j] < items[i]) {
+                answer[i] = items[j];
+                fulfill = true;
+            }
+        }
+        if (!fulfill)
+            answer[i] = -1;
+    }
+    return answer;
+}

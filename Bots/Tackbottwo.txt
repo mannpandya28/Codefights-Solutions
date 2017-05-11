@@ -1,0 +1,30 @@
+String[][][] proCategorization(String[] pros, String[][] preferences) {
+    ArrayList<String> jobs = new ArrayList<String>();
+    HashMap<String, ArrayList<String>> result = new HashMap<String, ArrayList<String>>();
+    for(int i = 0; i < pros.length; i++){
+        String[] tasks = preferences[i];
+        for(int j = 0; j < tasks.length; j++){
+            String task = tasks[j];
+            if(result.containsKey(task)){
+                result.get(task).add(pros[i]);
+            } else {
+                ArrayList<String> people = new ArrayList<String>();
+                people.add(pros[i]);
+                result.put(task, people);
+                jobs.add(task);
+            }
+        }
+    }
+    String[][][] finalResult = new String[jobs.size()][2][1];
+    Collections.sort(jobs);
+    for(int i = 0; i < jobs.size(); i++){
+        finalResult[i][0][0] = jobs.get(i);
+        ArrayList<String> people = result.get(jobs.get(i));
+        finalResult[i][1] = new String[people.size()];
+        Collections.sort(people);
+        for(int j = 0; j < people.size(); j++){
+            finalResult[i][1][j] = people.get(j);
+        }
+    }
+    return finalResult;
+}

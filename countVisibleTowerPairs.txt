@@ -1,0 +1,28 @@
+int countVisibleTowerPairs(std::vector<int> position, std::vector<int> height) {
+//cpp
+  int result = 0;
+
+  for (int i = 0; i < position.size(); i++) {
+    for (int j = i + 1; j < position.size(); j++) {
+      int A = height[j] - height[i],
+          B = position[i] - position[j],
+          C = - A * position[i] - B * height[i];
+      bool visible = true;
+
+      int leftBound = std::min(position[i], position[j]);
+      int rightBound = std::max(position[i], position[j]);
+      for (int k = 0; k < position.size(); k++) {
+        if (leftBound < position[k] && rightBound > position[k] &&
+            (A * position[k] + B * height[k] + C) * B > 0) {
+          visible = false;
+        }
+      }
+
+      if (visible) {
+        result++;
+      }
+    }
+  }
+
+  return result;
+}

@@ -1,0 +1,27 @@
+//c#
+int longestSequence(int[] A) {
+    var n = A.Length;
+    var max = 0;
+    for (var d = -250; d <= 250; ++d){
+        for (var i = 0; i < n; ++i) {
+            var start = A[i];
+            var res = 1;
+            var next = start + d;
+            var pos = i + 1;
+            while (pos < n) {
+                while (pos < n && A[pos] != next) {
+                    ++pos;
+                }
+                if (pos < n) {
+                    ++res;
+                    next = next + d;
+                    ++pos;
+                }
+            }
+            if (res > max) {
+                max = res;
+            }            
+        }
+    }
+    return max;
+}

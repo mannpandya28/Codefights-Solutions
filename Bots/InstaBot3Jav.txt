@@ -1,0 +1,52 @@
+//live
+boolean busyHolidays(String[][] shoppers, String[][] orders, int[] leadTime) {
+int temp[][] = new int[shoppers.length][shoppers[0].length];
+int temp2[][] = new int[orders.length][orders[0].length];
+   // int len = leadTime.length;
+    int count=0;
+    for(int i=0; i<shoppers.length;i++)//for temp1
+    {
+        for(int j=0;j<shoppers[i].length;j++)
+        {
+            String[] ans= shoppers[i][j].split(":");
+            for(int ik=0;ik<ans.length;ik++)
+            {
+                System.out.println(ans[ik]);
+            }
+             System.out.println("one iteration is over");
+            String sub = ans[0]+ans[1];
+            temp[i][j]=Integer.parseInt(sub);
+            System.out.println(temp[i][j]+ "this is temp");
+        }
+    
+    }
+    for(int i=0; i<orders.length;i++)//for temp2
+    {
+        for(int j=0;j<orders[i].length;j++)
+        {
+            String[] ans= orders[i][j].split(":");
+            for(int ik=0;ik<ans.length;ik++)
+            {
+                System.out.println(ans[ik]);
+            }
+            // System.out.println("one iteration is over");
+            String sub = ans[0]+ans[1];
+            temp2[i][j]=Integer.parseInt(sub);
+          //  System.out.println(temp2[i][j]+ "this is temp2");   
+        }
+    }
+    
+    for(int i=0;i<temp2.length;i++)//scanning within temp for orders;
+    {
+        for(int j=0;j<temp[i].length;j++)
+        {//
+           
+           // if(temp[j][1]>temp2[i][1]&& temp2[0][i]+leadTime[i]>=temp[j][0] && temp2[0][i]+leadTime[i]<=temp[j][1])
+           if(temp[j][0]>=temp2[i][0] &&temp[j][0]+leadTime[i]<temp2[i][1] ||
+            temp2[i][0]>=temp[j][0] && temp2[i][0]+leadTime[i]<temp2[i][1])
+                count++;
+            System.out.println("this is count ="+count);
+        }
+    }   
+    return count>=orders.length?true:false;
+}

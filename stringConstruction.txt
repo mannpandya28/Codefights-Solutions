@@ -1,0 +1,9 @@
+int stringsConstruction(std::string A, std::string B) {
+//cpp
+    vector<int> ca(256, 0), cb(256, 0);
+    for(char c : B) cb[c]++;
+    for(char c : A) ca[c]++;
+    int rs = 1000;
+    for(char c : A) rs = min(rs, cb[c] / ca[c]);
+    return rs;
+}
