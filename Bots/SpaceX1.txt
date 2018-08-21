@@ -1,0 +1,17 @@
+function launchSequenceChecker(systemNames, stepNumbers) {
+var temp = [];
+var start =0;
+var end = 0;
+    var count = 0;
+    for(var i=0;i<systemNames.length;i++)
+        {
+            count++;
+            if(temp.includes(systemNames[i]))
+                {
+                 if(stepNumbers[temp.lastIndexOf(systemNames[i])]>=stepNumbers[i])
+                        return false;
+                }
+                    temp.push(systemNames[i]);
+        }
+    return true;
+}

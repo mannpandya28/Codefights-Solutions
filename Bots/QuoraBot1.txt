@@ -1,0 +1,59 @@
+String questionCorrectionBot(String question) {
+    String v1="";
+    boolean flag = false;
+    boolean fspaces = true;
+    boolean modify = false;
+    v1 = question.trim();
+    System.out.println("After trim = " + v1);
+    String v2="";
+    for(int i=0;i<v1.length();i++)//middle spaces
+    {
+        if(v1.charAt(i)!=' ')
+        {
+            v2+=v1.charAt(i);
+            flag = false;
+        }
+        else
+        {
+            if(flag==false)
+            v2+=' ';
+            flag=true;
+        }
+    }
+    System.out.println("After middle whitespace= " + v2);
+    if(v2.charAt(v2.length()-1)==',')
+        modify = true;
+    String v3="";
+    String[] x = v2.split(",");///comma logic
+    for(int i=0;i<x.length;i++)
+        x[i] = x[i].trim();
+    for(int i=0;i<x.length;i++)
+    {
+        v3+=x[i];
+        v3+=',';
+        v3+=' ';
+    }
+    System.out.println("Before ,= " + v3);
+    String ab="";
+    for(int i=0;i<v3.length()-2;i++)
+        ab+=v3.charAt(i);
+    System.out.println("After ,= " + ab);
+    if(modify==true){
+        ab+=',';
+        ab+=' ';
+    }
+    String v4="";
+    for(int i=0;i<ab.length();i++)
+    {        
+        if(ab.charAt(i)!='?')//remove ?
+            v4+=ab.charAt(i);
+    }
+    v4+='?';
+    System.out.println("After adding ?= " + v4);
+    String v5="";
+     v5 += v4.substring(0,1).toUpperCase();//Uppercase
+    for(int i=1;i<v4.length();i++)
+        v5+=v4.charAt(i);
+    System.out.println("final= " + v5);
+    return v5;
+}

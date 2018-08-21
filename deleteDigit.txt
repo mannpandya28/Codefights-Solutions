@@ -1,0 +1,40 @@
+int deleteDigit(int n) {
+    int count =0;
+    int number =n;
+       while(number>0)
+    {
+        count++;
+        number/=10;
+    }
+    
+ArrayList<String> al = new ArrayList<>();
+    int skipdigit =0;
+    int [] digits = new int[count];
+    
+    for(int i=0;i<count;i++)
+    {
+        digits[i] = n%10;
+        n/=10;
+     }
+    
+    
+        while(skipdigit!=count)
+        {
+            String s ="";
+                for(int i=0;i<digits.length;i++)
+                {
+                    if(i!=skipdigit)
+                        s+= Integer.toString(digits[i]);
+                }
+            StringBuffer sb= new StringBuffer(s);
+            al.add(sb.reverse().toString());
+            skipdigit++;
+        }
+    int [] f = new int[al.size()];
+    for(int i=0;i<f.length;i++)
+    {
+        f[i] = Integer.parseInt(al.get(i));
+    }
+    Arrays.sort(f);
+    return f[f.length-1];
+}

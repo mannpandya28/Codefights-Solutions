@@ -1,0 +1,50 @@
+function serverFarm(jobs, servers) {
+    var ans = [];
+    var totaltime = new Array(servers);
+    totaltime.fill(0);
+    for(var i=0;i<servers;i++)//initializing an array
+        {
+            ans[i] = [];
+        }
+    ///////////////////////////////////////////////////
+    
+    for(var j=0;j<jobs.length;j++)//iterate every time
+        {
+             var min = 999;
+            var ind= 0;
+            var max = 0;
+            var index =0;
+            for(i=0;i<jobs.length;i++)//finding max
+            {
+                if(jobs[i]>max)
+                {
+                    max = jobs[i];
+                    index =i;
+                }
+            }
+            jobs[index] = -1;
+            //console.log("Maximum element found is = " + max);
+            //console.log("Min before is = " + min);
+            
+           for(var i=0; i<totaltime.length;i++)
+            {
+                //console.log(totaltime.length);
+               // console.log("totaltime array of " + i + " = " + totaltime[i]);
+                if(totaltime[i]<min)
+                {
+                    min=totaltime[i];
+                    ind = i;
+                }
+            }
+            //console.log("min after is = "+min+" at index= " + ind); 
+            //console.log("It will be pushed at row = " + ind);
+            ans[ind].push(index);
+           // console.log("old total time = " + totaltime[place]);
+           //console.log("max value is =" + max);
+            //console.log("total time b4 adding = "+ totaltime[ind]);
+            totaltime[ind]+= max;   
+            //console.log("new total time = " + totaltime[place]);
+            //console.log("===============================");
+        }
+    return ans;
+}

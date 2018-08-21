@@ -1,0 +1,19 @@
+int differentSquares(int[][] matrix) {
+/*int rows = matrix.length;
+    int columns = matrix[0].length;
+    return (rows-1)*(columns-1);*/
+    HashSet<String> hs = new HashSet<>();
+    String s = "";
+    for(int i=0;i<matrix.length-1;i++)
+    {
+        for(int j=0;j<matrix[i].length-1;j++)
+        {
+            for(int k=i;k<i+2;k++)
+            for(int l=j;l<j+2;l++)
+            s+=Integer.toString(matrix[k][l]);
+            hs.add(s);
+            s="";
+        }
+    }
+    return hs.size();
+}

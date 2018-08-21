@@ -1,0 +1,25 @@
+int chessKnight(String cell) {
+    String s = "abcdefgh";
+    int count =0;
+char kx = cell.charAt(0);
+char ky = cell.charAt(1);
+    
+int kdx = s.indexOf(kx) + 1;
+int kdy = Character.getNumericValue(ky);
+    
+    for(int x=1 ; x<=8 ; x++)
+    {
+        for(int y=1; y<=8; y++)
+        {
+            if(kdx+1 == x && kdy+2==y || kdx+2==x && kdy+1==y)//tr
+                count++;
+            if(kdx+1 == x && kdy-2==y || kdx+2 ==x && kdy-1==y)//br
+                count++;
+            if(kdx-1==x && kdy-2==y|| kdx-2==x&&kdy-1==y)//bl
+                count++;
+            if(kdx-1==x && kdy+2==y || kdx-2==x&& kdy+1==y)//tl
+                count++;
+        }
+    }
+    return count;
+}

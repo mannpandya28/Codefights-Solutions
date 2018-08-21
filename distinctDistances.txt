@@ -1,0 +1,6 @@
+int distinctDistances(int[] distances) {
+ if(distances[0]+distances[1] < distances[2]) return 4;
+    if(distances[2]+distances[1] < distances[0]) return 4;
+    if(distances[0]+distances[2] < distances[1]) return 4;
+    return 3;
+}
